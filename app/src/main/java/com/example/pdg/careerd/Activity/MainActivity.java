@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 
     private void initView() {
         ImageView banner = (ImageView) findViewById(R.id.mainBanner);
+        //메인banner 이미지 설정
         banner.setImageResource(R.mipmap.main_banner);
 
         Button beaconService = (Button) findViewById(R.id.beaconServiceButton);
@@ -42,10 +43,11 @@ public class MainActivity extends Activity {
 
     }
 
+    /**
+     * 메인 엑티비티 뒤로가기 버튼 시 물음 다이얼로그
+     */
     @Override
     public void onBackPressed() {
-        Log.i(CLASSNAME, "backKey 클릭");
-
         NormalDialogBuilder normalDialogBuilder = new NormalDialogBuilder(MainActivity.this);
 
         normalDialogBuilder.setActivity(this);
@@ -53,12 +55,17 @@ public class MainActivity extends Activity {
     }
 
 
+    /**
+     * 다음 엑티비티 실행
+     * @param activityClass 실행될 엑티비티 클래스명
+     */
     private void startNextActivity(Class activityClass) {
         Intent intent = new Intent(MainActivity.this, activityClass);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
+    //region onClickListener 메인 엑티비티의 onClickListener
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -66,7 +73,7 @@ public class MainActivity extends Activity {
 
             switch (viewId) {
                 case R.id.beaconServiceButton:
-                    startNextActivity(BeaconServiceActivity.class);
+                    startNextActivity(NotBeaconResActivity.class);
                     break;
                 case R.id.ainfoButton:
                     Toast.makeText(MainActivity.this, "ainfo클릭", Toast.LENGTH_SHORT).show();
@@ -75,4 +82,5 @@ public class MainActivity extends Activity {
             }
         }
     };
+    //endregion
 }

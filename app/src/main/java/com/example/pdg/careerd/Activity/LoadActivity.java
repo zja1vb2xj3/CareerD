@@ -3,7 +3,6 @@ package com.example.pdg.careerd.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.example.pdg.careerd.R;
 
 public class LoadActivity extends Activity {
