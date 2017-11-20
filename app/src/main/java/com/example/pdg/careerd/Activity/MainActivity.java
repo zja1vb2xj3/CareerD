@@ -3,14 +3,17 @@ package com.example.pdg.careerd.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.pdg.careerd.DialogBuilder.NormalDialogBuilder;
 import com.example.pdg.careerd.R;
 
 public class MainActivity extends Activity {
+    private String CLASSNAME = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +23,7 @@ public class MainActivity extends Activity {
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         ImageView banner = (ImageView) findViewById(R.id.mainBanner);
         banner.setImageResource(R.mipmap.main_banner);
 
@@ -41,20 +44,27 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+        Log.i(CLASSNAME, "backKey 클릭");
 
+        NormalDialogBuilder normalDialogBuilder = new NormalDialogBuilder(MainActivity.this);
+
+        normalDialogBuilder.setActivity(this);
+        normalDialogBuilder.setNormalDialogBuilder("알림", "App을 종료하시겠습니까?", "종료", "취소");
     }
 
-    private void startNextActivity(Class activityClass){
+
+    private void startNextActivity(Class activityClass) {
         Intent intent = new Intent(MainActivity.this, activityClass);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             int viewId = view.getId();
 
-            switch (viewId){
+            switch (viewId) {
                 case R.id.beaconServiceButton:
                     startNextActivity(BeaconServiceActivity.class);
                     break;
