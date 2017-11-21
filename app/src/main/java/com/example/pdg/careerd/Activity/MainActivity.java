@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,19 +29,24 @@ public class MainActivity extends Activity {
         //메인banner 이미지 설정
         banner.setImageResource(R.mipmap.main_banner);
 
-        Button beaconService = (Button) findViewById(R.id.beaconServiceButton);
+        ImageView beaconService = (ImageView) findViewById(R.id.beaconService);
 
-        Button ainfo = (Button) findViewById(R.id.ainfoButton);
-        Button binfo = (Button) findViewById(R.id.binfoButton);
-        Button cinfo = (Button) findViewById(R.id.cinfoButton);
-        Button dinfo = (Button) findViewById(R.id.dinfoButton);
+        ImageView ainfo = (ImageView) findViewById(R.id.ainfo);
+        ImageView binfo = (ImageView) findViewById(R.id.binfo);
+        ImageView cinfo = (ImageView) findViewById(R.id.cinfo);
+        ImageView dinfo = (ImageView) findViewById(R.id.dinfo);
+
+        beaconService.setImageResource(R.mipmap.bt_top_img);
+        ainfo.setImageResource(R.mipmap.bt_a_img);
+        binfo.setImageResource(R.mipmap.bt_b_img);
+        cinfo.setImageResource(R.mipmap.bt_c_img);
+        dinfo.setImageResource(R.mipmap.bt_d_img);
 
         beaconService.setOnClickListener(onClickListener);
         ainfo.setOnClickListener(onClickListener);
         binfo.setOnClickListener(onClickListener);
         cinfo.setOnClickListener(onClickListener);
         dinfo.setOnClickListener(onClickListener);
-
     }
 
     /**
@@ -72,10 +78,10 @@ public class MainActivity extends Activity {
             int viewId = view.getId();
 
             switch (viewId) {
-                case R.id.beaconServiceButton:
+                case R.id.beaconService:
                     startNextActivity(NotBeaconResActivity.class);
                     break;
-                case R.id.ainfoButton:
+                case R.id.ainfo:
                     Toast.makeText(MainActivity.this, "ainfo클릭", Toast.LENGTH_SHORT).show();
                     break;
 

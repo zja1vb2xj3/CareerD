@@ -1,62 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorActivityTitle"
-    android:orientation="horizontal">
+    android:layout_height="55dp">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:gravity="left"
+        android:background="@color/colorRepresent">
 
         <ImageView
-            android:id="@+id/top_title_back"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_gravity="center|left"
-            android:layout_marginLeft="15dp"
-            android:src="@mipmap/app_back_bt" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_weight="4"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold" />
+            android:src="@mipmap/top_back"
+            android:background="@color/colorRepresent"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/back"
+            />
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/rightText"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:gravity="center"
-            android:text="강의장보기"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
+            android:orientation="vertical"
+            android:background="@color/colorRepresent">
+
+            <TextView
+                android:id="@+id/firstTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/colorRepresent"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                />
+
+            <TextView
+                android:id="@+id/secondTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@color/colorRepresent"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@mipmap/top_home"
+            android:background="@color/colorRepresent"
+            android:layout_marginRight="5dp"
+            android:id="@+id/home"
+            />
 
     </LinearLayout>
+
 </LinearLayout>

@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.NotBeaconResActivity" />
-        <activity android:name=".Activity.IsBeaconResActivity"></activity>
+        <activity android:name=".Activity.IsBeaconResActivity" />
     </application>
 
 </manifest>
