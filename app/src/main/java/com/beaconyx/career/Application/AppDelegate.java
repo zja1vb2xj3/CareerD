@@ -1,4 +1,4 @@
-package com.example.pdg.careerd.Application;
+package com.beaconyx.career.Application;
 
 import android.app.Application;
 

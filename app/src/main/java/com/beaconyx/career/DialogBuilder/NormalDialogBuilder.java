@@ -1,4 +1,4 @@
-package com.example.pdg.careerd.DialogBuilder;
+package com.beaconyx.career.DialogBuilder;
 
 import android.app.Activity;
 import android.content.Context;

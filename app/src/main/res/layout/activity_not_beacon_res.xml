@@ -11,4 +11,10 @@
         android:layout_height="55dp"
         android:layout_alignParentTop="true" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mapImage"
+        android:scaleType="fitCenter"/>
+
 </LinearLayout>

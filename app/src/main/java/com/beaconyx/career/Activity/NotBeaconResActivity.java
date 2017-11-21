@@ -1,14 +1,13 @@
-package com.example.pdg.careerd.Activity;
+package com.beaconyx.career.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.pdg.careerd.R;
+import com.beaconyx.career.R;
 
 public class NotBeaconResActivity extends Activity{
 
@@ -18,6 +17,19 @@ public class NotBeaconResActivity extends Activity{
         setContentView(R.layout.activity_not_beacon_res);
 
         titleInit();
+        viewInit();
+    }
+
+    private void viewInit(){
+        ImageView mapImage = (ImageView) findViewById(R.id.mapImage);
+        mapImage.setImageResource(R.mipmap.map1);
+
+        mapImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void titleInit() {
@@ -28,7 +40,6 @@ public class NotBeaconResActivity extends Activity{
         firstTitle.setText("2018 현대·기아자동차");
 
         TextView secondTitle = top.findViewById(R.id.secondTitle);
-        secondTitle.setTextSize(20);
         secondTitle.setText("협력사 채용박람회");
 
         ImageView back = top.findViewById(R.id.back);

@@ -1,7 +1,6 @@
-package com.example.pdg.careerd.Toast;
+package com.beaconyx.career.Toast;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.widget.Toast;
 
 /**

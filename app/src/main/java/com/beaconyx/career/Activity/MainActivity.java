@@ -1,17 +1,14 @@
-package com.example.pdg.careerd.Activity;
+package com.beaconyx.career.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.pdg.careerd.DialogBuilder.NormalDialogBuilder;
-import com.example.pdg.careerd.R;
+import com.beaconyx.career.DialogBuilder.NormalDialogBuilder;
+import com.beaconyx.career.R;
 
 public class MainActivity extends Activity {
     private String CLASSNAME = getClass().getSimpleName();

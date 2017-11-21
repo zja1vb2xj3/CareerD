@@ -1,9 +1,10 @@
-package com.example.pdg.careerd.Activity;
+package com.beaconyx.career.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.example.pdg.careerd.R;
+
+import com.beaconyx.career.R;
 
 public class LoadActivity extends Activity {
 
