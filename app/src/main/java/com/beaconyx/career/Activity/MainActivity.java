@@ -3,6 +3,7 @@ package com.beaconyx.career.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -19,7 +20,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         initView();
+
     }
+
 
     private void initView() {
         ImageView banner = (ImageView) findViewById(R.id.mainBanner);
@@ -52,14 +55,25 @@ public class MainActivity extends Activity {
     @Override
     public void onBackPressed() {
         NormalDialogBuilder normalDialogBuilder = new NormalDialogBuilder(MainActivity.this);
-
-        normalDialogBuilder.setActivity(this);
-        normalDialogBuilder.setNormalDialogBuilder("알림", "App을 종료하시겠습니까?", "종료", "취소");
+        normalDialogBuilder.finishActivityNormalDialogBuilder("알림", "App을 종료하시겠습니까?", "종료", "취소");
+        normalDialogBuilder.setOnFinishActivityDialogCancelListener(new NormalDialogBuilder.OnFinishActivityDialogCancelListener() {
+            @Override
+            public void onCancel() {
+                finish();
+            }
+        });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+
+    }
 
     /**
      * 다음 엑티비티 실행
+     *
      * @param activityClass 실행될 엑티비티 클래스명
      */
     private void startNextActivity(Class activityClass) {
