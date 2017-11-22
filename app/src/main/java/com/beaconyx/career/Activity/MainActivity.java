@@ -2,6 +2,11 @@ package com.beaconyx.career.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +15,7 @@ import android.widget.Toast;
 
 import com.beaconyx.career.DialogBuilder.NormalDialogBuilder;
 import com.beaconyx.career.R;
+import com.beaconyx.career.Toast.ToastMessage;
 
 public class MainActivity extends Activity {
     private String CLASSNAME = getClass().getSimpleName();
@@ -25,6 +31,16 @@ public class MainActivity extends Activity {
 
 
     private void initView() {
+
+        ImageView megaPhone = (ImageView) findViewById(R.id.megaPhone);
+
+        Drawable icon = getResources().getDrawable(R.mipmap.megaphone_icon);
+        ColorFilter filter = new LightingColorFilter(Color.BLACK, Color.BLACK);
+        icon.setColorFilter(filter);
+
+        megaPhone.setImageDrawable(icon);
+
+
         ImageView banner = (ImageView) findViewById(R.id.mainBanner);
         //메인banner 이미지 설정
         banner.setImageResource(R.mipmap.main_banner);
@@ -42,6 +58,7 @@ public class MainActivity extends Activity {
         cinfo.setImageResource(R.mipmap.bt_c_img);
         dinfo.setImageResource(R.mipmap.bt_d_img);
 
+        megaPhone.setOnClickListener(onClickListener);
         beaconService.setOnClickListener(onClickListener);
         ainfo.setOnClickListener(onClickListener);
         binfo.setOnClickListener(onClickListener);
@@ -87,13 +104,18 @@ public class MainActivity extends Activity {
         @Override
         public void onClick(View view) {
             int viewId = view.getId();
+            ToastMessage toastMessage = new ToastMessage(MainActivity.this);
 
             switch (viewId) {
+                case R.id.megaPhone:
+                    toastMessage.printToast("확성기 버튼 클릭");
+                    break;
+
                 case R.id.beaconService:
                     startNextActivity(NotBeaconResActivity.class);
                     break;
                 case R.id.ainfo:
-                    Toast.makeText(MainActivity.this, "ainfo클릭", Toast.LENGTH_SHORT).show();
+                    toastMessage.printToast("행사장 안내 버튼 클릭");
                     break;
 
             }
