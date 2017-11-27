@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,12 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beaconyx.career.Application.AppDelegate;
+import com.beaconyx.career.Color.ColorManager;
 import com.beaconyx.career.DialogBuilder.NormalDialogBuilder;
 import com.beaconyx.career.R;
 import com.beaconyx.career.Toast.ToastMessage;
 
 import java.util.List;
 
+import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
@@ -47,8 +50,10 @@ public class MainActivity extends Activity {
     @BindView(R.id.megaPhone)
     ImageView megaPhone;
 
-    @BindView(R.id.megaPhoneCount)
-    TextView megaPhoneCount;
+    @BindView(R.id.countText)
+    TextView countText;
+
+    private ColorManager colorManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +62,46 @@ public class MainActivity extends Activity {
 
         ButterKnife.bind(this);
 
+        colorManager = new ColorManager(getResources());
+
         initView();
 
-        megaPhoneLayout.setOnClickListener(v -> megaPhoneLayoutClick());
+    }
 
+    private void megaPhoneLayoutClick() {
+        ToastMessage toastMessage = new ToastMessage(this);
+        toastMessage.printToast("메가폰 레이아웃 클릭");
+    }
+
+    private void initMegaphoneLayout(){
+        //region countTextView
+//        FrameLayout.LayoutParams countParams = new FrameLayout.LayoutParams(40, 40);
+//        countParams.gravity = Gravity.RIGHT;
+//        countParams.setMargins(0,10,0, 0);
+//        countText.setLayoutParams(countParams);
+//
+//        Drawable countDrawable = getResources().getDrawable(R.drawable.red_oval);
+//        countText.setBackground(countDrawable);
+//        countText.setTextColor(colorManager.getWhite());
+//        countText.setText("1");
+//        countText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//        countText.setTypeface(countText.getTypeface(), Typeface.BOLD);
+//        countText.setTextSize(10);
+        //endregion
+
+        //region megaPhone
+        FrameLayout.LayoutParams megaPhoneParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        megaPhoneParams.gravity = Gravity.BOTTOM | Gravity.CENTER;
+        megaPhone.setLayoutParams(megaPhoneParams);
+
+        Drawable icon = getResources().getDrawable(R.mipmap.megaphone_icon);
+        ColorFilter iconColor = new LightingColorFilter(colorManager.getRepresent(), colorManager.getRepresent());
+        icon.setColorFilter(iconColor);
+
+        megaPhone.setImageDrawable(icon);
+        //endregion
+
+        //region layout
         megaPhoneLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -68,18 +109,15 @@ public class MainActivity extends Activity {
                 System.out.println(megaPhoneLayout.getWidth());
                 System.out.println(megaPhoneLayout.getHeight());
 
-                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(megaPhoneLayout.getWidth() + 20, megaPhoneLayout.getHeight() + 20);
-                params.gravity = Gravity.RIGHT | Gravity.BOTTOM;
-
-                megaPhoneLayout.setLayoutParams(params);
-
+                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(megaPhoneLayout.getWidth() + 20, megaPhoneLayout.getHeight() + 20);
+                layoutParams.gravity = Gravity.RIGHT | Gravity.BOTTOM;
+                layoutParams.setMargins(0,0,20,0);
+                megaPhoneLayout.setLayoutParams(layoutParams);
             }
         });
-    }
 
-    private void megaPhoneLayoutClick() {
-        ToastMessage toastMessage = new ToastMessage(this);
-        toastMessage.printToast("메가폰 레이아웃 클릭");
+        megaPhoneLayout.setOnClickListener(v -> megaPhoneLayoutClick());
+        //endregion
     }
 
 
@@ -89,20 +127,7 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
 
-                Drawable newCountBackground = getResources().getDrawable(R.drawable.red_oval);
-                megaPhoneCount.setBackground(newCountBackground);
-                megaPhoneCount.setTextColor(Color.parseColor("#FFFFFF"));
-                megaPhoneCount.setText("1");
-                megaPhoneCount.setTextSize(10);
-
-                Drawable icon = getResources().getDrawable(R.mipmap.megaphone_icon);
-                ColorFilter blackFilter = new LightingColorFilter(Color.BLACK, Color.BLACK);
-                icon.setColorFilter(blackFilter);
-
-                megaPhone.setImageDrawable(icon);
-
-//                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(megaPhone.getWidth()+10, megaPhone.getHeight()+10);
-//                megaPhoneLayout.setLayoutParams(layoutParams);
+                initMegaphoneLayout();
 
                 //메인banner 이미지 설정
                 mainBanner.setBackgroundResource(R.mipmap.main_banner);
@@ -147,27 +172,5 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-//    //region onClickListener 메인 엑티비티의 onClickListener
-//    View.OnClickListener onClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            int viewId = view.getId();
-//            ToastMessage toastMessage = new ToastMessage(MainActivity.this);
-//
-//            switch (viewId) {
-//                case R.id.megaPhoneLayout:
-//                    toastMessage.printToast("메가폰 클릭");
-//                    break;
-//
-//                case R.id.beaconService:
-//                    startNextActivity(NotBeaconResActivity.class);
-//                    break;
-//                case R.id.ainfo:
-//                    toastMessage.printToast("행사장 안내 버튼 클릭");
-//                    break;
-//
-//            }
-//        }
-//    };
-//    //endregion
+
 }
