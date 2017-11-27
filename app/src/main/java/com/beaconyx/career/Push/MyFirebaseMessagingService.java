@@ -5,6 +5,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -22,6 +24,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.io.FileInputStream;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,23 +37,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-
-//        String from = remoteMessage.getFrom();
-//        Map message = remoteMessage.getData();
-//
-//        Log.i(CLASSNAME, from);
-//        Log.i(CLASSNAME, message.get("message").toString());
-//
-//
-//        if (remoteMessage.getData().size() > 0) {
-//            Log.i(CLASSNAME, "백그라운드 작동");
-//            sendNotification(remoteMessage.getData().get("message"));
-//        }
-//
-//        if (remoteMessage.getNotification() != null) {
-//            Log.i(CLASSNAME, "포그라운드 작동");
-//            sendNotification(remoteMessage.getNotification().getBody());
-//        }
 
     }
 
@@ -65,7 +51,40 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         String title = intent.getStringExtra("title");
         String msg = intent.getStringExtra("msg");
 
+        changeAppBedgeCount(0);
         sendNotification(title, msg);
+
+    }
+
+    private void changeAppBedgeCount(int badgeCount){
+        Intent intent = new Intent("android.intent.action.BADGE_COUNT_UPDATE");
+
+        intent.putExtra("badge_count", badgeCount);
+
+        intent.putExtra("badge_count_package_name", getPackageName());
+
+        intent.putExtra("badge_count_class_name", getLauncherClassName());
+
+        sendBroadcast(intent);
+    }
+
+    private String getLauncherClassName(){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+        PackageManager packageManager = getApplicationContext().getPackageManager();
+
+        List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(intent, 0);
+
+        for(ResolveInfo info : resolveInfos){
+            String packageName = info.activityInfo.applicationInfo.packageName;
+
+            if(packageName.equalsIgnoreCase(getPackageName())){
+                return info.activityInfo.name;
+            }
+        }
+
+        return null;
     }
 
     private void sendNotification(String title, String msg) {
@@ -75,7 +94,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        if(title == null){
+        if (title == null) {
             title = "Career";
         }
 

@@ -16,6 +16,9 @@
     <!-- 핸드폰 uuid 확인 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+
     <application
         android:name=".Application.AppDelegate"
         android:allowBackup="true"

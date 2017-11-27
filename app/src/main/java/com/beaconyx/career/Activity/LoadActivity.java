@@ -3,12 +3,16 @@ package com.beaconyx.career.Activity;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.beaconyx.career.Constant.IntentKeyConstant;
 import com.beaconyx.career.DialogBuilder.NormalDialogBuilder;
 import com.beaconyx.career.R;
+
+import java.util.List;
 
 public class LoadActivity extends Activity {
     private final String CLASSNAME = getClass().getSimpleName();
@@ -21,6 +25,7 @@ public class LoadActivity extends Activity {
         checkPushData();
 
     }
+
 
     private void checkPushData() {
         final String pushMessage = getIntent().getStringExtra(IntentKeyConstant.AppPushIntentKey.PUSH_DATA_KEY);
