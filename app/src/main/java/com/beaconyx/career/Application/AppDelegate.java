@@ -39,6 +39,8 @@ public class AppDelegate extends Application implements BeaconConsumer {
     }
 
 
+
+
     private void parseInit() {
         Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
                 .applicationId("YesdexaAZx4r86eeoyIwwGfdfOLeT2CnQKFcQ1")

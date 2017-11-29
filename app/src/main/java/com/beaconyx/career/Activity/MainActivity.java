@@ -66,31 +66,38 @@ public class MainActivity extends Activity {
 
         initView();
 
+        megaPhoneLayout.setOnClickListener(v -> megaPhoneLayoutClick());
+        beaconService.setOnClickListener(v -> beaconServiceButtonClick());
+    }
+
+    private void beaconServiceButtonClick() {
+        startNextActivity(NotBeaconResActivity.class);
     }
 
     private void megaPhoneLayoutClick() {
-        ToastMessage toastMessage = new ToastMessage(this);
-        toastMessage.printToast("메가폰 레이아웃 클릭");
+        startNextActivity(NoticeActivity.class);
     }
 
-    private void initMegaphoneLayout(){
+    private void initMegaphoneLayout(int count){
         //region countTextView
-//        FrameLayout.LayoutParams countParams = new FrameLayout.LayoutParams(40, 40);
-//        countParams.gravity = Gravity.RIGHT;
-//        countParams.setMargins(0,10,0, 0);
-//        countText.setLayoutParams(countParams);
-//
-//        Drawable countDrawable = getResources().getDrawable(R.drawable.red_oval);
-//        countText.setBackground(countDrawable);
-//        countText.setTextColor(colorManager.getWhite());
-//        countText.setText("1");
-//        countText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//        countText.setTypeface(countText.getTypeface(), Typeface.BOLD);
-//        countText.setTextSize(10);
-        //endregion
+        final int countTextViewSize = 40;
+        FrameLayout.LayoutParams countParams = new FrameLayout.LayoutParams(countTextViewSize, countTextViewSize);
+        countParams.gravity = Gravity.RIGHT;
+        countParams.setMargins(0,10,0, 0);
+        countText.setLayoutParams(countParams);
+
+        Drawable countDrawable = getResources().getDrawable(R.drawable.red_oval);
+        countText.setBackground(countDrawable);
+        countText.setTextColor(colorManager.getWhite());
+        countText.setText(String.valueOf(count));
+        countText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        countText.setTypeface(countText.getTypeface(), Typeface.BOLD);
+        countText.setTextSize(11);
+    //endregion
 
         //region megaPhone
-        FrameLayout.LayoutParams megaPhoneParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        final int megaPhoneSize = 80;
+        FrameLayout.LayoutParams megaPhoneParams = new FrameLayout.LayoutParams(megaPhoneSize, megaPhoneSize);
         megaPhoneParams.gravity = Gravity.BOTTOM | Gravity.CENTER;
         megaPhone.setLayoutParams(megaPhoneParams);
 
@@ -99,6 +106,7 @@ public class MainActivity extends Activity {
         icon.setColorFilter(iconColor);
 
         megaPhone.setImageDrawable(icon);
+
         //endregion
 
         //region layout
@@ -109,14 +117,14 @@ public class MainActivity extends Activity {
                 System.out.println(megaPhoneLayout.getWidth());
                 System.out.println(megaPhoneLayout.getHeight());
 
-                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(megaPhoneLayout.getWidth() + 20, megaPhoneLayout.getHeight() + 20);
+                final int megaPhoneLayoutPlusValue = 20;
+                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(megaPhoneLayout.getWidth() + megaPhoneLayoutPlusValue, megaPhoneLayout.getHeight() + megaPhoneLayoutPlusValue);
                 layoutParams.gravity = Gravity.RIGHT | Gravity.BOTTOM;
-                layoutParams.setMargins(0,0,20,0);
+                layoutParams.setMargins(0,0,20,20);
                 megaPhoneLayout.setLayoutParams(layoutParams);
             }
         });
 
-        megaPhoneLayout.setOnClickListener(v -> megaPhoneLayoutClick());
         //endregion
     }
 
@@ -127,7 +135,7 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
 
-                initMegaphoneLayout();
+                initMegaphoneLayout(2);
 
                 //메인banner 이미지 설정
                 mainBanner.setBackgroundResource(R.mipmap.main_banner);
