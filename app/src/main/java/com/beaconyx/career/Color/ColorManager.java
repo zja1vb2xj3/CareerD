@@ -15,9 +15,15 @@ public class ColorManager {
     private int red;
     private int white;
     private int black;
-
+    private int lightGrey;
+    private int rightArrow;
     public ColorManager(Resources resources) {
         res = resources;
+    }
+
+    public int getRightArrow() {
+        rightArrow = res.getColor(R.color.colorRightArrow);
+        return rightArrow;
     }
 
     public int getBlack() {
@@ -38,5 +44,10 @@ public class ColorManager {
     public int getRepresent() {
         represent = res.getColor(R.color.colorRepresent);
         return represent;
+    }
+
+    public int getLightGrey() {
+        represent = res.getColor(R.color.colorLightGrey);
+        return lightGrey;
     }
 }

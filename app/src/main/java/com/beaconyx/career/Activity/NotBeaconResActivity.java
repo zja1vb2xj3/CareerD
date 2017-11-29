@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.beaconyx.career.R;
@@ -42,18 +43,18 @@ public class NotBeaconResActivity extends Activity{
         TextView secondTitle = top.findViewById(R.id.secondTitle);
         secondTitle.setText("협력사 채용박람회");
 
-        ImageView back = top.findViewById(R.id.back);
+        LinearLayout backLayout = top.findViewById(R.id.backLayout);
 
-        back.setOnClickListener(new View.OnClickListener() {
+        backLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
 
-        ImageView home = top.findViewById(R.id.home);
+        LinearLayout homeLayout = top.findViewById(R.id.homeLayout);
 
-        home.setOnClickListener(new View.OnClickListener() {
+        homeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
