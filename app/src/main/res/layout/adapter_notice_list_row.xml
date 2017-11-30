@@ -15,8 +15,31 @@
             android:layout_weight="5"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorMediumBlack"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:gravity="bottom"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/new_icon" />
+
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
@@ -25,7 +48,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
-                android:gravity="bottom"/>
+                />
 
             <TextView
                 android:id="@+id/time"
@@ -35,21 +58,9 @@
                 android:textColor="@color/colorMediumGrey"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:textColor="@color/colorMediumBlack"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textStyle="bold"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="10dp"
-                />
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
 

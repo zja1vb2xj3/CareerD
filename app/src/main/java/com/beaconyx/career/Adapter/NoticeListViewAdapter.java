@@ -1,7 +1,6 @@
 package com.beaconyx.career.Adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
@@ -64,7 +63,7 @@ public class NoticeListViewAdapter extends BaseAdapter {
 
             viewHolder.title = (TextView) view.findViewById(R.id.title);
             viewHolder.time = (TextView) view.findViewById(R.id.time);
-            viewHolder.text = (TextView) view.findViewById(R.id.text);
+            viewHolder.content = (TextView) view.findViewById(R.id.content);
             viewHolder.image = (ImageView) view.findViewById(R.id.image);
 
             view.setTag(viewHolder);
@@ -78,8 +77,8 @@ public class NoticeListViewAdapter extends BaseAdapter {
         String time = noticeModels.get(position).getTime();
         viewHolder.time.setText(time);
 
-        String text = noticeModels.get(position).getText();
-        viewHolder.text.setText(text);
+        String content = noticeModels.get(position).getContent();
+        viewHolder.content.setText(content);
 
         Drawable rightArrow = context.getResources().getDrawable(R.mipmap.right_arrow);
         ColorFilter arrowColor = new LightingColorFilter(colorManager.getRightArrow(), colorManager.getRightArrow());
@@ -91,8 +90,8 @@ public class NoticeListViewAdapter extends BaseAdapter {
 
     private class ViewHolder {
         private TextView title;
+        private TextView content;
         private TextView time;
-        private TextView text;
         private ImageView image;
     }
 }

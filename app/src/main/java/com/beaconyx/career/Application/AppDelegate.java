@@ -43,8 +43,8 @@ public class AppDelegate extends Application implements BeaconConsumer {
 
     private void parseInit() {
         Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
-                .applicationId("YesdexaAZx4r86eeoyIwwGfdfOLeT2CnQKFcQ1")
-                .clientKey("YesdexbeaconyxSwvy38GBFH6i1MZ2JGxfYkt2j4gaROGxy")
+                .applicationId("CareerbeaconyxaAZx4r86ekoyIwwGfdfOLeT2CnQKFcQ1")
+                .clientKey("CareerbeaconyxSkvy38GBFH6i1MZ2JGxfYkt2j4gaRoKxy")
                 .server("http://www.beaconyx.co.kr:1337/parse")   // '/' important after 'parse'
                 .build());
         ParseInstallation.getCurrentInstallation().saveInBackground();

@@ -114,8 +114,6 @@ public class MainActivity extends Activity {
             @Override
             public void onGlobalLayout() {
                 megaPhoneLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                System.out.println(megaPhoneLayout.getWidth());
-                System.out.println(megaPhoneLayout.getHeight());
 
                 final int megaPhoneLayoutPlusValue = 20;
                 FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(megaPhoneLayout.getWidth() + megaPhoneLayoutPlusValue, megaPhoneLayout.getHeight() + megaPhoneLayoutPlusValue);

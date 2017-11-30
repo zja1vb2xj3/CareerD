@@ -3,7 +3,6 @@ package com.beaconyx.career.Activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,21 +28,6 @@ public class NoticeActivity extends Activity {
         noticeListView = (ListView) findViewById(R.id.list);
         noticeListViewAdapter = new NoticeListViewAdapter(getApplicationContext());
 
-        NoticeModel noticeModel0 = new NoticeModel();
-
-        noticeModel0.setTitle("제목 0");
-        noticeModel0.setTime("시간 0");
-        noticeModel0.setText("내용 0");
-
-
-        NoticeModel noticeModel1 = new NoticeModel();
-
-        noticeModel1.setTitle("제목 1");
-        noticeModel1.setTime("시간 1");
-        noticeModel1.setText("내용 1");
-
-        noticeListViewAdapter.addItem(noticeModel0);
-        noticeListViewAdapter.addItem(noticeModel1);
 
         noticeListView.setAdapter(noticeListViewAdapter);
     }
